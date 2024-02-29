@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trade in trades %}
+        <tr>
+            <td>{{ trade["symbol"] }}</td>
+            <td>{{ trade["symbol"] }}</td>
+            <td>{{ trade["sum_shares"] }}</td>
+            <td>{{ trade["price"]| usd}}</td>
+            <td>{{(trade["sum_shares"] * trade["price"])| usd}}</td>
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<div id="summary"">
+<p><b>CASH:{{cash[0]["cash"]| usd}}</b></p>
+<p><b>TOTAL:{{(total + cash[0]["cash"])| usd}}</b></p>
+</div>
+{% endblock %}
